@@ -4,12 +4,16 @@ import './register.css'
 
 
 const Registration = () => {
-    const [formData, setFormData] = useState({ name: "", email: "", mobile: 0, scheme: "" })
+    // for handling form
+    const [formData, setFormData] = useState({ name: "", email: "", mobile: "", scheme: "" })
 
+    // for handling form inputs
     const [isValied, setIsValied] = useState(false)
 
+    //for handling form inputs
     const isAllInputsValied = formData.name.length && formData.email.length && formData.mobile.length && formData.scheme.length
 
+    // form details submitting to backend
     const handleForm = (e) => {
         e.preventDefault()
 
@@ -30,6 +34,17 @@ const Registration = () => {
             alert("Successfully Registered")
         }
     }
+
+    //for handling email verification
+    const verifyEmail = () => {
+        alert("Verify Email")
+    }
+
+    // for handling mobile number verification
+    const verifyMobile = () => {
+        alert(" Verify Mobile Number")
+    }
+
     return (
         <>
             <section className='registration-container'>
@@ -43,12 +58,12 @@ const Registration = () => {
 
                         <article className='form-fields'>
                             <label htmlFor="email">Email</label>
-                            <input name='email' id='email' type="email" placeholder='Enter your email' onChange={e => setFormData({ ...formData, email: e.target.value })} value={formData.email} />
+                            <input onBlur={verifyEmail} name='email' id='email' type="email" placeholder='Enter your email' onChange={e => setFormData({ ...formData, email: e.target.value })} value={formData.email} />
                         </article>
 
                         <article className='form-fields'>
                             <label htmlFor="mobile">Mobile</label>
-                            <input name='mobile' id='mobile' type="text" placeholder='Enter your mobile' onChange={e => setFormData({ ...formData, mobile: e.target.value })} value={formData.mobile} />
+                            <input onBlur={verifyMobile} name='mobile' id='mobile' type="text" placeholder='Enter your mobile' onChange={e => setFormData({ ...formData, mobile: e.target.value })} value={formData.mobile} />
                         </article>
 
                         <article className='form-fields'>
